@@ -51,6 +51,8 @@ RUN cmake -DSTATICCOMPILE=ON .. \
 # set up for running
 FROM alpine:latest
 COPY --from=builder /usr/local/bin/approxmc /usr/local/bin/
+RUN adduser approxmc
+USER approxmc
 ENTRYPOINT ["/usr/local/bin/approxmc"]
 
 # --------------------
